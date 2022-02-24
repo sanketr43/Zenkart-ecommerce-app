@@ -12,12 +12,18 @@
     <nav class="bui-navbar">
         <div class="bui-navbar-container bui-container">
             <div class="bui-navbar-logo">Zenkart</div>
-            <div class="bui-navbar-menu bui-navbar-search">
+            <div class="bui-navbar-menu bui-navbar-search bui-mobile-search" id="mobileSearchBlock">
                 <i class="bi bi-search"></i>
-                <input type="text" class="bui-form-control" placeholder="Search">
+                <input type="text" class="bui-form-control" placeholder="Search" id="mobileSearchInput">
             </div>
             <div class="bui-navbar-menu">
-                <div class="bui-navbar-menu-item">
+                <div class="bui-mobile-menu">
+                    <a class="bui-navbar-icon" id="mobileSearchMenu"><i class="bi bi-search"></i></a>
+                </div>
+                <div class="bui-mobile-menu">
+                    <a class="bui-navbar-icon"><i class="bi bi-box-arrow-in-right"></i></a>
+                </div>
+                <div class="bui-navbar-menu-item bui-desktop">
                     <button class="bui-btn bui-btn-info">Login</button>
                 </div>
                 <div class="bui-navbar-menu-item">
@@ -26,9 +32,6 @@
                 <div class="bui-navbar-menu-item">
                     <a class="bui-navbar-icon"><i class="bi bi-cart"></i><span class="bui-badge-round bui-badge-absolute bui-bg-info">0</span></a>
                 </div>
-            </div>
-            <div class="bui-mobile-menu">
-                <button><i class="bi bi-list"></i></button>
             </div>
         </div>
     </nav>

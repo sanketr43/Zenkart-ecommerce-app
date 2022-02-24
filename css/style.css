@@ -59,6 +59,10 @@ body{
     box-shadow: 0px 1px 0px 0px hsl(240deg 6% 87%);
 }
 
+.bui-navbar-container{
+    position: relative;
+}
+
 .bui-navbar .bui-navbar-logo{
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -126,8 +130,14 @@ body{
 }
 
 @media screen and (max-width: 768px) {
-    .bui-navbar-menu{
+    .bui-desktop{
         display: none;
+    }
+
+    .bui-mobile-search{
+        position: absolute;
+        width: 100%;
+        z-index: -1;
     }
     
     .bui-mobile-menu{

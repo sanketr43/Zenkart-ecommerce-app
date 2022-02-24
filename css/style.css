@@ -1,3 +1,8 @@
+:root{
+    --primary-color: #3c80b4;
+    --secondary-color: #7C3AED;
+}
+
 body{
     margin: 0;
 }
@@ -52,6 +57,12 @@ body{
     padding-bottom: 0.5rem;
     -webkit-box-shadow: 0px 1px 0px 0px hsl(240deg 6% 87%); 
     box-shadow: 0px 1px 0px 0px hsl(240deg 6% 87%);
+}
+
+.bui-navbar .bui-navbar-logo{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--secondary-color);
 }
 
 .bui-navbar-search{
@@ -227,5 +238,47 @@ body{
     }
 }
 /*homepage category card block 2 bottom*/
+
+/*slider component*/
+.bui-slider-container{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    height: 40vh;
+    width: 100%;
+}
+
+.bui-slider-container .bui-slider{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.bui-slider-container .bui-slider img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    animation: 9s slider infinite;
+    z-index: -1;
+    cursor: pointer;
+}
+
+@keyframes slider {
+    0% {z-index: 0}
+    33.32% {z-index: 0}
+    33.33% {z-index: -1}
+}
+
+.bui-slider-container .bui-slider img:nth-child(1) {animation-delay: 0s}
+.bui-slider-container .bui-slider img:nth-child(2) {animation-delay: 3s}
+.bui-slider-container .bui-slider img:nth-child(3) {animation-delay: 6s}
+
+@media only screen and (max-width: 576px){
+    .bui-slider-container{
+        height: 20vh;
+    }
+}
+/*slider component*/
 
 

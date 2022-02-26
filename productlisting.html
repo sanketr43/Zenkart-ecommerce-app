@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/boiler-ui.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Zenkart | Products Category</title>
+</head>
+<body>
+    <nav class="bui-navbar">
+        <div class="bui-navbar-container bui-container">
+            <div class="bui-navbar-logo">Zenkart</div>
+            <div class="bui-navbar-menu bui-navbar-search bui-mobile-search" id="mobileSearchBlock">
+                <i class="bi bi-search"></i>
+                <input type="text" class="bui-form-control" placeholder="Search" id="mobileSearchInput">
+            </div>
+            <div class="bui-navbar-menu">
+                <div class="bui-mobile-menu">
+                    <a class="bui-navbar-icon" id="mobileSearchMenu"><i class="bi bi-search"></i></a>
+                </div>
+                <div class="bui-mobile-menu">
+                    <a class="bui-navbar-icon"><i class="bi bi-box-arrow-in-right"></i></a>
+                </div>
+                <div class="bui-navbar-menu-item bui-desktop">
+                    <button class="bui-btn bui-btn-info">Login</button>
+                </div>
+                <div class="bui-navbar-menu-item">
+                    <a class="bui-navbar-icon"><i class="bi bi-heart"></i><span class="bui-badge-round bui-badge-absolute bui-bg-info">0</span></a>
+                </div>
+                <div class="bui-navbar-menu-item">
+                    <a class="bui-navbar-icon"><i class="bi bi-cart"></i><span class="bui-badge-round bui-badge-absolute bui-bg-info">0</span></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="bui-products-block">
+        <div class="bui-products">
+
+            <div class="bui-products-filter" id="productsFilter">
+                <div class="bui-products-filter-block">
+                    <div class="bui-filter-mobile" style="text-align: right;"><p onclick="toggleFilter();">Close</p></div>
+                    <div class="bui-filter"><p class="bui-filter-title">Filters</p> <a href="#">Clear</a></div>
+                </div>
+
+                <div class="bui-filter-block">
+                    <p class="bui-filter-title">Price</p>
+                    <div class="bui-mb-3 bui-mt-3">
+                        <label for="price" class="bui-form-label" id="priceValue"></label>
+                        <input name="price" class="bui-slider" id="priceRange" type="range" min="1" max="100" value="50">
+                    </div>
+                </div>
+
+                <div class="bui-filter-block">
+                    <p class="bui-filter-title bui-mb-2">Category</p>
+                    <label class="bui-filter-label"><input type="checkbox"> Men Clothing</label>
+                    <label class="bui-filter-label"><input type="checkbox"> Women Clothing</label>
+                    <label class="bui-filter-label"><input type="checkbox"> Child Clothing</label>
+                </div>
+
+                <div class="bui-filter-block">
+                    <p class="bui-filter-title bui-mb-2">Rating</p>
+                    <label class="bui-filter-label"><input type="radio" name="rating"> 4 star and above</label>
+                    <label class="bui-filter-label"><input type="radio" name="rating"> 3 star and above</label>
+                    <label class="bui-filter-label"><input type="radio" name="rating"> 2 star and above</label>
+                    <label class="bui-filter-label"><input type="radio" name="rating"> 1 star and above</label>
+                </div>
+
+                <div class="bui-filter-block">
+                    <p class="bui-filter-title bui-mb-2">Sort By</p>
+                    <label class="bui-filter-label"><input type="radio" name="sort_by"> Price - Low to High</label>
+                    <label class="bui-filter-label"><input type="radio" name="sort_by"> Price - High to Low</label>
+                </div>
+            </div>
+
+            <div class="bui-products-listing">
+                <p class="bui-products-title">Showing all products <span>(showing 20 products)</span></p>
+                <div class="bui-filter-mobile" onclick="toggleFilter();"><i class="bi bi-list"></i> Filters</div>
+                
+                <div class="bui-products-col">
+
+                    <div class="bui-card bui-card-product">
+                        <div class="bui-card-badge bui-whishlist-icon bui-whishlisted"><i class="bi bi-heart-fill"></i></div>
+                        <img class="bui-card-img-top" src="https://img.mensxp.com/media/shop/catalog/products/M/742352/maroon-front-zip-bomber-jacket-61998-default.jpg" alt="card-image">
+                        <div class="bui-card-body bui-text-center">
+                            <p class="bui-card-text">Men Premium Jacker</p>
+                            <h5 class="bui-card-title">$2000</h5>
+                        </div>
+                        <div class="bui-card-footer">
+                            <button class="bui-btn bui-btn-info bui-addcart">Add to cart</button>
+                        </div>
+                    </div>
+
+                    <div class="bui-card bui-card-product">
+                        <div class="bui-card-badge bui-whishlist-icon"><i class="bi bi-heart"></i></div>
+                        <img class="bui-card-img-top" src="https://img.mensxp.com/media/shop/catalog/products/M/742352/maroon-front-zip-bomber-jacket-61998-default.jpg" alt="card-image">
+                        <div class="bui-card-body bui-text-center">
+                            <p class="bui-card-text">Men Premium Jacker</p>
+                            <h5 class="bui-card-title">$2000</h5>
+                        </div>
+                        <div class="bui-card-footer">
+                            <button class="bui-btn bui-btn-info bui-addcart">Add to cart</button>
+                        </div>
+                    </div>
+
+                    <div class="bui-card bui-card-product">
+                        <div class="bui-card-badge bui-whishlist-icon"><i class="bi bi-heart"></i></div>
+                        <img class="bui-card-img-top" src="https://img.mensxp.com/media/shop/catalog/products/M/742352/maroon-front-zip-bomber-jacket-61998-default.jpg" alt="card-image">
+                        <div class="bui-card-body bui-text-center">
+                            <p class="bui-card-text">Men Premium Jacker</p>
+                            <h5 class="bui-card-title">$2000</h5>
+                        </div>
+                        <div class="bui-card-footer">
+                            <button class="bui-btn bui-btn-info bui-addcart">Add to cart</button>
+                        </div>
+                    </div>
+
+                    <div class="bui-card bui-card-product">
+                        <div class="bui-card-badge bui-whishlist-icon"><i class="bi bi-heart"></i></div>
+                        <img class="bui-card-img-top" src="https://img.mensxp.com/media/shop/catalog/products/M/742352/maroon-front-zip-bomber-jacket-61998-default.jpg" alt="card-image">
+                        <div class="bui-card-body bui-text-center">
+                            <p class="bui-card-text">Men Premium Jacker</p>
+                            <h5 class="bui-card-title">$2000</h5>
+                        </div>
+                        <div class="bui-card-footer">
+                            <button class="bui-btn bui-btn-info bui-addcart">Add to cart</button>
+                        </div>
+                    </div>
+
+                    <div class="bui-card bui-card-product">
+                        <div class="bui-card-badge bui-whishlist-icon"><i class="bi bi-heart"></i></div>
+                        <img class="bui-card-img-top" src="https://img.mensxp.com/media/shop/catalog/products/M/742352/maroon-front-zip-bomber-jacket-61998-default.jpg" alt="card-image">
+                        <div class="bui-card-body bui-text-center">
+                            <p class="bui-card-text">Men Premium Jacker</p>
+                            <h5 class="bui-card-title">$2000</h5>
+                        </div>
+                        <div class="bui-card-footer">
+                            <button class="bui-btn bui-btn-info bui-addcart">Add to cart</button>
+                        </div>
+                    </div>
+
+                    <div class="bui-card bui-card-product">
+                        <div class="bui-card-badge bui-whishlist-icon"><i class="bi bi-heart"></i></div>
+                        <img class="bui-card-img-top" src="https://img.mensxp.com/media/shop/catalog/products/M/742352/maroon-front-zip-bomber-jacket-61998-default.jpg" alt="card-image">
+                        <div class="bui-card-body bui-text-center">
+                            <p class="bui-card-text">Men Premium Jacker</p>
+                            <h5 class="bui-card-title">$2000</h5>
+                        </div>
+                        <div class="bui-card-footer">
+                            <button class="bui-btn bui-btn-info bui-addcart">Add to cart</button>
+                        </div>
+                    </div>
+
+                    <div class="bui-card bui-card-product">
+                        <div class="bui-card-badge bui-whishlist-icon"><i class="bi bi-heart"></i></div>
+                        <img class="bui-card-img-top" src="https://img.mensxp.com/media/shop/catalog/products/M/742352/maroon-front-zip-bomber-jacket-61998-default.jpg" alt="card-image">
+                        <div class="bui-card-body bui-text-center">
+                            <p class="bui-card-text">Men Premium Jacker</p>
+                            <h5 class="bui-card-title">$2000</h5>
+                        </div>
+                        <div class="bui-card-footer">
+                            <button class="bui-btn bui-btn-info bui-addcart">Add to cart</button>
+                        </div>
+                    </div>
+
+                    <div class="bui-card bui-card-product">
+                        <div class="bui-card-badge bui-whishlist-icon"><i class="bi bi-heart"></i></div>
+                        <img class="bui-card-img-top" src="https://img.mensxp.com/media/shop/catalog/products/M/742352/maroon-front-zip-bomber-jacket-61998-default.jpg" alt="card-image">
+                        <div class="bui-card-body bui-text-center">
+                            <p class="bui-card-text">Men Premium Jacker</p>
+                            <h5 class="bui-card-title">$2000</h5>
+                        </div>
+                        <div class="bui-card-footer">
+                            <button class="bui-btn bui-btn-info bui-addcart">Add to cart</button>
+                        </div>
+                    </div>
+
+                    <div class="bui-card bui-card-product">
+                        <div class="bui-card-badge bui-whishlist-icon"><i class="bi bi-heart"></i></div>
+                        <img class="bui-card-img-top" src="https://img.mensxp.com/media/shop/catalog/products/M/742352/maroon-front-zip-bomber-jacket-61998-default.jpg" alt="card-image">
+                        <div class="bui-card-body bui-text-center">
+                            <p class="bui-card-text">Men Premium Jacker</p>
+                            <h5 class="bui-card-title">$2000</h5>
+                        </div>
+                        <div class="bui-card-footer">
+                            <button class="bui-btn bui-btn-info bui-addcart">Add to cart</button>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>

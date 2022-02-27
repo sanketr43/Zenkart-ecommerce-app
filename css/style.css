@@ -49,6 +49,9 @@ body{
     }
 }
 
+.bui-btn-block{
+    width: 100%;
+}
 /*global style end*/
 
 
@@ -596,5 +599,31 @@ body{
     }
 }
 /*wishlist page end*/
+
+/*Login and logout page start*/
+.bui-auth{
+    max-width: 500px;
+    margin: 0 auto;
+    padding-top: 10rem;
+}
+
+.bui-auth .bui-auth-form{
+
+}
+
+.bui-auth-form .bui-remember{
+    display: flex;
+    justify-content: space-between;
+}
+
+.bui-auth-form{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.bui-auth-form a{
+    text-decoration: none;
+}
+/*Login and logout page end*/
 
 

@@ -7,12 +7,12 @@ This is the under development react based project.
 
 You can find the Zenkart UI Static page development preview below.
 
-- [Landing Page](https://sad-lamport-245b5f.netlify.app/index.html)
-- [Products Listing Page](https://sad-lamport-245b5f.netlify.app/productlisting.html)
-- [Cart Page](https://sad-lamport-245b5f.netlify.app/cart.html)
-- [Wishlist Page](https://sad-lamport-245b5f.netlify.app/wishlist.html)
-- [Login Page](https://sad-lamport-245b5f.netlify.app/login.html)
-- [Regsiter Page](https://sad-lamport-245b5f.netlify.app/register.html)
+- [Landing Page](https://zenkart-ui.netlify.app/index.html)
+- [Products Listing Page](https://zenkart-ui.netlify.app/productlisting.html)
+- [Cart Page](https://zenkart-ui.netlify.app/cart.html)
+- [Wishlist Page](https://zenkart-ui.netlify.app/wishlist.html)
+- [Login Page](https://zenkart-ui.netlify.app/login.html)
+- [Regsiter Page](https://zenkart-ui.netlify.app/register.html)
 
 ## Tech
 

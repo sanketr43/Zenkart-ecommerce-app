@@ -34,5 +34,9 @@ function toggleFilter() {
     }
   }
   //product filters end
+  
+  function redirectPage(page){
+   window.location.href = page;
+  }
 
 

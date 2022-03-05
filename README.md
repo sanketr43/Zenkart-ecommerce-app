@@ -5,7 +5,7 @@ This is the under development react based project.
 
 ## Zenkart UI 
 
-You can find the Zenkart UI Static page development preview below.
+You can find the Zenkart UI Static page development preview below. ([Branch](https://github.com/sanketr43/zenkart-ecommerce-app/tree/zenkart-ui))
 
 - [Landing Page](https://zenkart-ui.netlify.app/index.html)
 - [Products Listing Page](https://zenkart-ui.netlify.app/productlisting.html)

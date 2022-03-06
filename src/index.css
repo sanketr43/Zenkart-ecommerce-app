@@ -1,0 +1,402 @@
+/*global style start*/
+:root{
+    --primary-color: #3c80b4;
+    --secondary-color: #7C3AED;
+}
+
+body{
+    margin: 0;
+}
+
+.bui-navbar {
+    background: hsl(240deg 7% 97%);
+}
+
+.bui-navbar-logo > img{
+    height: 40px;
+    cursor: pointer;
+}
+
+.bui-container{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (max-width: 576px){
+    .bui-container{
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 576px){
+    .bui-container{
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px){
+    .bui-container{
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px){
+    .bui-container{
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px){
+    .bui-container{
+        max-width: 1140px;
+    }
+}
+
+@media (min-width: 1400px){
+    .bui-container{
+        max-width: 1320px;
+    }
+}
+
+.bui-btn-block{
+    width: 100%;
+}
+/*global style end*/
+
+
+
+
+
+
+
+/*products page start*/
+.bui-products-block{
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+
+.bui-products{
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+}
+
+.bui-products-filter, .bui-products-listing{
+    padding: 20px;
+}
+
+.bui-products-listing .bui-products-title{
+    font-weight: bold;
+    margin: 0;
+}
+
+.bui-products-title span{
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.bui-filter-mobile{
+    cursor: pointer;
+    margin-top: 10px;
+    display: none;
+}
+
+.bui-products-col{
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.bui-card-product{
+    border-radius: 0px;
+    border-bottom: 0px;
+    max-width: 250px;
+}
+
+.bui-card-product .bui-whishlist-icon{
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    padding: 15px;
+    background: white;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.bui-card-product .bui-whishlist-icon i{
+    color: black;
+}
+
+.bui-card-product .bui-whishlist-icon.bui-whishlisted i{
+    color: red;
+}
+
+.bui-card-product .bui-card-img-top{
+    height: 17rem;
+}
+
+.bui-card-product .bui-card-body{
+    padding: 5px 5px;
+}
+
+.bui-card-body .bui-card-text{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.bui-card-product .bui-addcart{
+    width: 100%;
+    border-radius: 0;
+    margin: 0px;
+}
+
+.bui-filter{
+    display: flex;
+    justify-content: space-between;
+}
+
+.bui-filter a{
+    color: black;
+}
+
+.bui-filter-block{
+    margin-top: 20px;
+}
+
+.bui-slider{
+    width: 100%;
+}
+
+.bui-filter-label{
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.bui-filter-title{
+    font-weight: bold;
+    margin: 0;
+}
+
+@media (max-width: 992px){
+
+    .bui-products-col{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+    }
+
+    .bui-products{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .bui-products .bui-products-filter{
+        position: absolute;
+        height: 100vh;
+        z-index: 10;
+        background: white;
+        width: 300px;
+        display: none;
+        overflow: auto;
+    } 
+
+    .bui-filter-mobile{
+        display: block;
+    }
+}
+
+@media (max-width: 576px){
+
+    .bui-products-col{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .bui-products-block{
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/*product page end*/
+
+
+/*Cart page start*/
+.bui-cart-title{
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+.bui-cart{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+}
+
+.bui-cart-items-container{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;  
+}
+
+.bui-cart-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bui-cart-item .bui-cart-img{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.bui-cart-item .bui-cart-img img{
+    height: 100%;
+    width: auto;
+}
+
+.bui-cart-item .bui-cart-name{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bui-cart-item .bui-cart-qty{
+    display: flex;
+    gap: 5px;
+}
+
+.bui-cart-item .bui-cart-qty input{
+    width: 60px;
+    padding: 5px;
+    text-align: center;
+}
+
+.bui-cart-item .bui-cart-qty button{
+    padding: 10px;
+    margin: 0;
+    font-weight: bold;
+}
+
+.bui-cart-item .bui-cart-btn{
+    flex-basis: 200px;
+}
+
+.bui-cart-item .bui-cart-btn button{
+    width: 100%;
+}
+
+.bui-cart-total{
+    display: flex;
+    flex-direction: column;
+}
+
+.bui-cart-total .bui-card-title{
+    text-transform: uppercase;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bui-cart-total hr{
+    width: 100%;
+    height: 2px;
+    background: #E5E7EB;
+    border: none;
+}
+
+.bui-cart-price{
+    margin-top: 10px;
+}
+
+.bui-cart-total .bui-cart-price{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 576px){
+    .bui-cart{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .bui-cart .bui-cart-total-container {
+        grid-column-start: 1;
+        grid-row-start: 1;
+    }
+
+    
+}
+
+/*Cart page end*/
+
+/*Wishlist page start*/
+.bui-wishlist-title{
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+.bui-wishlist{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 20px;
+}
+
+@media (max-width: 922px){
+    .bui-wishlist{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 10px;
+    }
+}
+
+@media (max-width: 576px){
+    .bui-wishlist{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 10px;
+    }
+}
+/*wishlist page end*/
+
+/*Login and logout page start*/
+.bui-auth{
+    max-width: 500px;
+    margin: 0 auto;
+    padding-top: 10rem;
+}
+
+.bui-auth .bui-auth-form{
+
+}
+
+.bui-auth-form .bui-remember{
+    display: flex;
+    justify-content: space-between;
+}
+
+.bui-auth-form{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.bui-auth-form a{
+    text-decoration: none;
+}
+/*Login and logout page end*/
+

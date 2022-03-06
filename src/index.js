@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import './boiler-ui.css';
-import './index.css';
+import './assets/boiler-ui.css';
+import './assets/index.css';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';

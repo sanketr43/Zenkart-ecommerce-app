@@ -1,11 +1,14 @@
 import './homepage.styles.css';
+import { useNavigate } from 'react-router-dom';
 
 function Homepage() {
+    let navigate = useNavigate();
+
     return ( 
         <>
             <div className="bui-container">
                 <div className="bui-home-category">
-                    <div className="bui-card">
+                    <div className="bui-card" onClick={() => navigate('category')}>
                         <div className="bui-card-img">
                             <img className="bui-card-img-top" src="https://cdn.pixabay.com/photo/2018/02/08/11/54/male-3139289__340.jpg" alt="card-image"/>
                             <div className="bui-card-img-overlay">
@@ -13,7 +16,7 @@ function Homepage() {
                             </div>
                         </div>
                     </div>
-                    <div className="bui-card">
+                    <div className="bui-card" onClick={() => navigate('category')}>
                         <div className="bui-card-img">
                             <img className="bui-card-img-top" src="https://cdn.pixabay.com/photo/2018/02/08/11/54/male-3139289__340.jpg" alt="card-image"/>
                             <div className="bui-card-img-overlay">
@@ -21,7 +24,7 @@ function Homepage() {
                             </div>
                         </div>
                     </div>
-                    <div className="bui-card">
+                    <div className="bui-card" onClick={() => navigate('category')}>
                         <div className="bui-card-img">
                             <img className="bui-card-img-top" src="https://cdn.pixabay.com/photo/2018/02/08/11/54/male-3139289__340.jpg" alt="card-image"/>
                             <div className="bui-card-img-overlay">
@@ -29,7 +32,7 @@ function Homepage() {
                             </div>
                         </div>
                     </div>
-                    <div className="bui-card">
+                    <div className="bui-card" onClick={() => navigate('category')}>
                         <div className="bui-card-img">
                             <img className="bui-card-img-top" src="https://cdn.pixabay.com/photo/2018/02/08/11/54/male-3139289__340.jpg" alt="card-image"/>
                             <div className="bui-card-img-overlay">
@@ -37,7 +40,7 @@ function Homepage() {
                             </div>
                         </div>
                     </div>
-                    <div className="bui-card">
+                    <div className="bui-card" onClick={() => navigate('category')}>
                         <div className="bui-card-img">
                             <img className="bui-card-img-top" src="https://cdn.pixabay.com/photo/2018/02/08/11/54/male-3139289__340.jpg" alt="card-image"/>
                             <div className="bui-card-img-overlay">
@@ -56,7 +59,7 @@ function Homepage() {
                 </div>
 
                 <div className="bui-home-category-two">
-                    <div className="bui-card-row" onclick="redirectPage('productlisting.html');">
+                    <div className="bui-card-row" onClick={() => navigate('category')}>
                         <div className="bui-card-badge bui-bg-info">New Arrival</div>
                         <img className="bui-card-img-left" src="https://cdn.pixabay.com/photo/2018/02/08/11/54/male-3139289__340.jpg" alt="card-image"/>
                         <div className="bui-card-body">
@@ -66,7 +69,7 @@ function Homepage() {
                             </p>
                         </div>
                     </div>
-                    <div className="bui-card-row" onclick="redirectPage('productlisting.html');">
+                    <div className="bui-card-row" onClick={() => navigate('category')}>
                         <div className="bui-card-badge bui-bg-info">New Arrival</div>
                         <img className="bui-card-img-left" src="https://cdn.pixabay.com/photo/2018/02/08/11/54/male-3139289__340.jpg" alt="card-image"/>
                         <div className="bui-card-body">

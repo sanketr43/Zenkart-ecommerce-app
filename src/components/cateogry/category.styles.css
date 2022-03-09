@@ -1,0 +1,157 @@
+/*products page start*/
+.bui-products-block{
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+
+.bui-products{
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+}
+
+.bui-products-filter, .bui-products-listing{
+    padding: 20px;
+}
+
+.bui-products-listing .bui-products-title{
+    font-weight: bold;
+    margin: 0;
+}
+
+.bui-products-title span{
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.bui-filter-mobile{
+    cursor: pointer;
+    margin-top: 10px;
+    display: none;
+}
+
+.bui-products-col{
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.bui-card-product{
+    border-radius: 0px;
+    border-bottom: 0px;
+    max-width: 250px;
+}
+
+.bui-card-product .bui-whishlist-icon{
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    padding: 15px;
+    background: white;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.bui-card-product .bui-whishlist-icon i{
+    color: black;
+}
+
+.bui-card-product .bui-whishlist-icon.bui-whishlisted i{
+    color: red;
+}
+
+.bui-card-product .bui-card-img-top{
+    height: 17rem;
+}
+
+.bui-card-product .bui-card-body{
+    padding: 5px 5px;
+}
+
+.bui-card-body .bui-card-text{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.bui-card-product .bui-addcart{
+    width: 100%;
+    border-radius: 0;
+    margin: 0px;
+}
+
+.bui-filter{
+    display: flex;
+    justify-content: space-between;
+}
+
+.bui-filter a{
+    color: black;
+}
+
+.bui-filter-block{
+    margin-top: 20px;
+}
+
+.bui-slider{
+    width: 100%;
+}
+
+.bui-filter-label{
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.bui-filter-title{
+    font-weight: bold;
+    margin: 0;
+}
+
+@media (max-width: 992px){
+
+    .bui-products-col{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+    }
+
+    .bui-products{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .bui-products .bui-products-filter{
+        position: absolute;
+        height: 100vh;
+        z-index: 10;
+        background: white;
+        width: 300px;
+        display: none;
+        overflow: auto;
+    } 
+
+    .bui-filter-mobile{
+        display: block;
+    }
+}
+
+@media (max-width: 576px){
+
+    .bui-products-col{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .bui-products-block{
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/*product page end*/

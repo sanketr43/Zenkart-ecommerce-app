@@ -1,84 +1,72 @@
 import './homepage.styles.css';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
+import {categories_array, collections_array, sliders_array} from "../../data/homepage";
 
 function Homepage() {
     let navigate = useNavigate();
+    const [categories, setCategories] = useState([]);
+    const [collections, setCollections] = useState([]);
+    const [sliders, setSliders] = useState([]);
+
+    useEffect(() => {
+        setTimeout(()=>{
+            setCategories(categories_array);
+            setCollections(collections_array);
+            setSliders(sliders_array);
+        },0);
+    },[]);
 
     return ( 
         <>
             <div className="bui-container">
                 <div className="bui-home-category">
-                    <div className="bui-card" onClick={() => navigate('category')}>
-                        <div className="bui-card-img">
-                            <img className="bui-card-img-top" src="https://cdn.pixabay.com/photo/2018/02/08/11/54/male-3139289__340.jpg" alt="card-image"/>
-                            <div className="bui-card-img-overlay">
-                                <h5 className="bui-card-title">Men</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="bui-card" onClick={() => navigate('category')}>
-                        <div className="bui-card-img">
-                            <img className="bui-card-img-top" src="https://cdn.pixabay.com/photo/2018/02/08/11/54/male-3139289__340.jpg" alt="card-image"/>
-                            <div className="bui-card-img-overlay">
-                                <h5 className="bui-card-title">Men</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="bui-card" onClick={() => navigate('category')}>
-                        <div className="bui-card-img">
-                            <img className="bui-card-img-top" src="https://cdn.pixabay.com/photo/2018/02/08/11/54/male-3139289__340.jpg" alt="card-image"/>
-                            <div className="bui-card-img-overlay">
-                                <h5 className="bui-card-title">Men</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="bui-card" onClick={() => navigate('category')}>
-                        <div className="bui-card-img">
-                            <img className="bui-card-img-top" src="https://cdn.pixabay.com/photo/2018/02/08/11/54/male-3139289__340.jpg" alt="card-image"/>
-                            <div className="bui-card-img-overlay">
-                                <h5 className="bui-card-title">Men</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="bui-card" onClick={() => navigate('category')}>
-                        <div className="bui-card-img">
-                            <img className="bui-card-img-top" src="https://cdn.pixabay.com/photo/2018/02/08/11/54/male-3139289__340.jpg" alt="card-image"/>
-                            <div className="bui-card-img-overlay">
-                                <h5 className="bui-card-title">Men</h5>
-                            </div>
-                        </div>
-                    </div>
+                    {
+                        categories.map(category => {
+                            return(
+                                <div className="bui-card" onClick={() => navigate('category')} key={category.id}>
+                                    <div className="bui-card-img">
+                                        <img className="bui-card-img-top" src={category.image} alt="card-image"/>
+                                        <div className="bui-card-img-overlay">
+                                            <h5 className="bui-card-title">{category.title}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
 
                 <div className="bui-slider-container">
                     <div className="bui-slider">
-                        <img src="https://images.unsplash.com/photo-1580828343064-fde4fc206bc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" alt=""/>
-                        <img src="https://images.unsplash.com/photo-1607083205626-956228d6185d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1193&q=80" alt=""/>
-                        <img src="https://images.unsplash.com/photo-1591030434469-3d78c7b17820?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80" alt=""/>
+                        {
+                            sliders.map(slider => {
+                                return(
+                                    <img src={slider.image} alt=""/>
+                                )
+                            })
+                        }
                     </div>
                 </div>
 
                 <div className="bui-home-category-two">
-                    <div className="bui-card-row" onClick={() => navigate('category')}>
-                        <div className="bui-card-badge bui-bg-info">New Arrival</div>
-                        <img className="bui-card-img-left" src="https://cdn.pixabay.com/photo/2018/02/08/11/54/male-3139289__340.jpg" alt="card-image"/>
-                        <div className="bui-card-body">
-                            <h5 className="bui-card-title">Summer Collection</h5>
-                            <p className="bui-card-text">
-                                Check out our best winter collection to stay warm in style this season.
-                            </p>
-                        </div>
-                    </div>
-                    <div className="bui-card-row" onClick={() => navigate('category')}>
-                        <div className="bui-card-badge bui-bg-info">New Arrival</div>
-                        <img className="bui-card-img-left" src="https://cdn.pixabay.com/photo/2018/02/08/11/54/male-3139289__340.jpg" alt="card-image"/>
-                        <div className="bui-card-body">
-                            <h5 className="bui-card-title">Summer Collection</h5>
-                            <p className="bui-card-text">
-                                Check out our best winter collection to stay warm in style this season.
-                            </p>
-                        </div>
-                    </div>
+                    {
+                        collections.map(collection => {
+                            return(
+                                <div className="bui-card-row" onClick={() => navigate('category')} key={collection.id}>
+                                    <div className="bui-card-badge bui-bg-info">New Arrival</div>
+                                    <img className="bui-card-img-left" src={collection.image} alt="card-image"/>
+                                    <div className="bui-card-body">
+                                        <h5 className="bui-card-title">{collection.title}</h5>
+                                        <p className="bui-card-text">
+                                            {collection.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            );
+                        })
+                    }
                 </div>
             </div>
         </>

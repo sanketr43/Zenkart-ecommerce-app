@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import './category.styles.css';
 
+import { getProductsByCategory } from "../../data/products";
+import { useParams } from "react-router-dom";
 
 function Category() {
 
-    const products = [1,2,3,4,5,6,7,8,9,10,11,12];
+    const [products, setProducts] = useState([]);
+    let { id } = useParams();
+
+    useEffect(()=>{
+        setProducts(getProductsByCategory(id));
+    },[]);
 
     return ( 
         <>
@@ -51,29 +58,16 @@ function Category() {
                         <div className="bui-filter-mobile"><i className="bi bi-list"></i> Filters</div>
                         
                         <div className="bui-products-col">
-                            
-
-                            <div className="bui-card bui-card-product">
-                                <div className="bui-card-badge bui-whishlist-icon bui-whishlisted"><i className="bi bi-heart-fill"></i></div>
-                                <img className="bui-card-img-top" src="https://img.mensxp.com/media/shop/catalog/products/M/742352/maroon-front-zip-bomber-jacket-61998-default.jpg" alt="card-image"/>
-                                <div className="bui-card-body bui-text-center">
-                                    <p className="bui-card-text">Men Premium Jacker</p>
-                                    <h5 className="bui-card-title">$2000</h5>
-                                </div>
-                                <div className="bui-card-footer">
-                                    <button className="bui-btn bui-btn-info bui-addcart">Add to cart</button>
-                                </div>
-                            </div>
 
                             {
                                 products.map(item => {
                                     return(
-                                        <div className="bui-card bui-card-product" key={item}>
+                                        <div className="bui-card bui-card-product" key={item.id}>
                                             <div className="bui-card-badge bui-whishlist-icon"><i className="bi bi-heart"></i></div>
-                                            <img className="bui-card-img-top" src="https://img.mensxp.com/media/shop/catalog/products/M/742352/maroon-front-zip-bomber-jacket-61998-default.jpg" alt="card-image"/>
+                                            <img className="bui-card-img-top" src={item.image} alt="card-image"/>
                                             <div className="bui-card-body bui-text-center">
-                                                <p className="bui-card-text">Men Premium Jacker</p>
-                                                <h5 className="bui-card-title">$2000</h5>
+                                                <p className="bui-card-text">{item.title}</p>
+                                                <h5 className="bui-card-title">${item.price}</h5>
                                             </div>
                                             <div className="bui-card-footer">
                                                 <button className="bui-btn bui-btn-info bui-addcart">Add to cart</button>

@@ -25,7 +25,7 @@ function Homepage() {
                     {
                         categories.map(category => {
                             return(
-                                <div className="bui-card" onClick={() => navigate('category')} key={category.id}>
+                                <div className="bui-card" onClick={() => navigate(`category/${category.id}`)} key={category.id}>
                                     <div className="bui-card-img">
                                         <img className="bui-card-img-top" src={category.image} alt="card-image"/>
                                         <div className="bui-card-img-overlay">
@@ -43,7 +43,7 @@ function Homepage() {
                         {
                             sliders.map(slider => {
                                 return(
-                                    <img src={slider.image} alt=""/>
+                                    <img src={slider.image} onClick={() => navigate(`category/${slider.category_id}`)} alt=""/>
                                 )
                             })
                         }
@@ -54,7 +54,7 @@ function Homepage() {
                     {
                         collections.map(collection => {
                             return(
-                                <div className="bui-card-row" onClick={() => navigate('category')} key={collection.id}>
+                                <div className="bui-card-row" onClick={() => navigate(`category/${collection.category_id}`)} key={collection.id}>
                                     <div className="bui-card-badge bui-bg-info">New Arrival</div>
                                     <img className="bui-card-img-left" src={collection.image} alt="card-image"/>
                                     <div className="bui-card-body">

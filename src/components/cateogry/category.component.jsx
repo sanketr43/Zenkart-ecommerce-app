@@ -3,15 +3,27 @@ import './category.styles.css';
 
 import { getProductsByCategory } from "../../data/products";
 import { useParams } from "react-router-dom";
+import { useCart } from "../../context/cart-context";
 
 function Category() {
 
     const [products, setProducts] = useState([]);
     let { id } = useParams();
 
+    const { dispatch } = useCart();
+
+    const addToCart = (item) => {
+        dispatch({type: "ADD_TO_CART",payload: item});
+    }
+
+    const removeFromCart = (item) => {
+        dispatch({type: "REMOVE_FROM_CART",payload: item});
+    }
+
     useEffect(()=>{
         setProducts(getProductsByCategory(id));
     },[]);
+
 
     return ( 
         <>
@@ -63,14 +75,14 @@ function Category() {
                                 products.map(item => {
                                     return(
                                         <div className="bui-card bui-card-product" key={item.id}>
-                                            <div className="bui-card-badge bui-whishlist-icon"><i className="bi bi-heart"></i></div>
+                                            <div className="bui-card-badge bui-whishlist-icon" onClick={() => removeFromCart(item)}><i className="bi bi-heart"></i></div>
                                             <img className="bui-card-img-top" src={item.image} alt="card-image"/>
                                             <div className="bui-card-body bui-text-center">
                                                 <p className="bui-card-text">{item.title}</p>
-                                                <h5 className="bui-card-title">${item.price}</h5>
+                                                <h5 className="bui-card-title">₹{item.price}</h5>
                                             </div>
                                             <div className="bui-card-footer">
-                                                <button className="bui-btn bui-btn-info bui-addcart">Add to cart</button>
+                                                <button className="bui-btn bui-btn-info bui-addcart" onClick={() => addToCart(item)}>Add to cart</button>
                                             </div>
                                         </div>
                                     )

@@ -8,10 +8,14 @@ import './assets/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { CartProvider } from './context/cart-context';
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+    <CartProvider>
       <App />
+    </CartProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

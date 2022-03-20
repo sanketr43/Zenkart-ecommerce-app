@@ -2,11 +2,13 @@ import logo from '../../assets/logo.png';
 import './navbar.styles.css';
 import { Link,NavLink,useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/cart-context';
+import { useWishlist } from '../../context/wishlist-context';
 
 function Navbar() {
     let navigate = useNavigate();
 
     const { state } = useCart();
+    const { stateWishlist } = useWishlist();
 
     return ( 
         <nav className="bui-navbar">
@@ -31,7 +33,7 @@ function Navbar() {
                     <button className="bui-btn bui-btn-info" onClick={() => navigate('login')}>Login</button>
                 </div>
                 <div className="bui-navbar-menu-item">
-                    <NavLink to='wishlist' className="bui-navbar-icon"><i className="bi bi-heart"></i><span className="bui-badge-round bui-badge-absolute bui-bg-info">0</span></NavLink>
+                    <NavLink to='wishlist' className="bui-navbar-icon"><i className="bi bi-heart"></i><span className="bui-badge-round bui-badge-absolute bui-bg-info">{stateWishlist.wishlistItems.length}</span></NavLink>
                 </div>
                 <div className="bui-navbar-menu-item">
                     <NavLink to="cart" className="bui-navbar-icon"><i className="bi bi-cart"></i><span className="bui-badge-round bui-badge-absolute bui-bg-info">{state.totalQty}</span></NavLink>

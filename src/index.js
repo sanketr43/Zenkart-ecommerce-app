@@ -9,12 +9,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { CartProvider } from './context/cart-context';
+import { WishlistProvider } from './context/wishlist-context';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
     <CartProvider>
-      <App />
+      <WishlistProvider>
+        <App />
+      </WishlistProvider>
     </CartProvider>
     </BrowserRouter>
   </React.StrictMode>,

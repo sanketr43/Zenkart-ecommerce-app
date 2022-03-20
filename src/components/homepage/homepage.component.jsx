@@ -43,7 +43,7 @@ function Homepage() {
                         {
                             sliders.map(slider => {
                                 return(
-                                    <img src={slider.image} onClick={() => navigate(`category/${slider.category_id}`)} alt=""/>
+                                    <img src={slider.image} key={slider.id} onClick={() => navigate(`category/${slider.category_id}`)} alt=""/>
                                 )
                             })
                         }

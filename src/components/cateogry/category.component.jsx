@@ -4,6 +4,7 @@ import './category.styles.css';
 import { getProductsByCategory } from "../../data/products";
 import { useParams } from "react-router-dom";
 import { useCart } from "../../context/cart-context";
+import { useWishlist } from "../../context/wishlist-context";
 
 function Category() {
 
@@ -11,13 +12,20 @@ function Category() {
     let { id } = useParams();
 
     const { dispatch } = useCart();
+    const {stateWishlist, dispatchWishlist} = useWishlist();
+
+    const addToWishlist = (item) => {
+        dispatchWishlist({type: "ADD_TO_WISHLIST",payload: item});
+    }
+
+    const isWishlist = (id) => {
+        const wishlistItemIndex = stateWishlist.wishlistItems.findIndex(product => product.id === id);
+        if(wishlistItemIndex === -1) return false;
+        return true;
+    }
 
     const addToCart = (item) => {
         dispatch({type: "ADD_TO_CART",payload: item});
-    }
-
-    const removeFromCart = (item) => {
-        dispatch({type: "REMOVE_FROM_CART",payload: item});
     }
 
     useEffect(()=>{
@@ -75,7 +83,12 @@ function Category() {
                                 products.map(item => {
                                     return(
                                         <div className="bui-card bui-card-product" key={item.id}>
-                                            <div className="bui-card-badge bui-whishlist-icon" onClick={() => removeFromCart(item)}><i className="bi bi-heart"></i></div>
+                                            {
+                                                isWishlist(item.id) ?
+                                                <div className="bui-card-badge bui-whishlist-icon bui-whishlisted" onClick={() => addToWishlist(item)} ><i className="bi bi-heart-fill"></i></div>
+                                                :
+                                                <div className="bui-card-badge bui-whishlist-icon" onClick={() => addToWishlist(item)} ><i className="bi bi-heart"></i></div>
+                                            }
                                             <img className="bui-card-img-top" src={item.image} alt="card-image"/>
                                             <div className="bui-card-body bui-text-center">
                                                 <p className="bui-card-text">{item.title}</p>

@@ -1,10 +1,12 @@
 import { useCart } from "../../context/cart-context";
 import "./cart.styles.css";
 import { NavLink } from 'react-router-dom';
+import { useWishlist } from "../../context/wishlist-context";
 
 function Cart() {
 
     const { state, dispatch } = useCart();
+    const { dispatchWishlist } = useWishlist();
     const { CartItems, totalQty, totalPrice } = state;
 
     const addToCart = (item) => {
@@ -17,6 +19,11 @@ function Cart() {
         }else{
             dispatch({type: "REMOVE_FROM_CART",payload: item});
         }
+    }
+
+    const moveToWishlist = (item) => {
+        dispatch({type: "REMOVE_FROM_CART_ALL",payload: item});
+        dispatchWishlist({type: "ADD_TO_WISHLIST",payload: item});
     }
 
     return ( 
@@ -57,7 +64,7 @@ function Cart() {
                                                 </div>
                                                 <div className="bui-cart-btn">
                                                     <button className="bui-btn bui-btn-info" onClick={() => removeFromCart(item,true)}>Remove from cart</button>
-                                                    <button className="bui-btn bui-btn-default">Move to wishlist</button>
+                                                    <button className="bui-btn bui-btn-default" onClick={() => moveToWishlist(item)}>Move to wishlist</button>
                                                 </div>
                                             </div>
                                         </div>

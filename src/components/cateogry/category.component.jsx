@@ -1,18 +1,25 @@
 import React, { useState,useEffect } from "react";
 import './category.styles.css';
-
+import { useNavigate } from 'react-router-dom';
 import { getProductsByCategory } from "../../data/products";
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useCart } from "../../context/cart-context";
 import { useWishlist } from "../../context/wishlist-context";
+import axios from 'axios';
+import { BASE_URL } from "../../context/global-context";
 
 function Category() {
-
+    let navigate = useNavigate();
     const [products, setProducts] = useState([]);
-    let { id } = useParams();
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [categories, setCategories] = useState([]);
+    const [price, setPrice] = useState();
+    const [rating, setRating] = useState();
+    const [sortby, setSortby] = useState();
 
     const { dispatch } = useCart();
     const {stateWishlist, dispatchWishlist} = useWishlist();
+    const { state } = useCart();
 
     const addToWishlist = (item) => {
         dispatchWishlist({type: "ADD_TO_WISHLIST",payload: item});
@@ -24,14 +31,41 @@ function Category() {
         return true;
     }
 
+    const isAddedToCart = (id) => {
+        const cartItemIndex = state.CartItems.findIndex(product => product.id === id);
+        if(cartItemIndex === -1) return false;
+        return true;
+    }
+
     const addToCart = (item) => {
         dispatch({type: "ADD_TO_CART",payload: item});
     }
 
-    useEffect(()=>{
-        setProducts(getProductsByCategory(id));
-    },[]);
+    const applyFilter = () => {
+        alert();
+    }
 
+    useEffect(()=>{
+        let q_categories = (searchParams.get('id'))? searchParams.get('id') : '';
+        let q_price = (searchParams.get('price'))? searchParams.get('price') : '';
+        let q_rating = (searchParams.get('rating'))? searchParams.get('rating') : '';
+        let q_sortby = (searchParams.get('sort_by'))? searchParams.get('sort_by') : '';
+
+        let query = '?id='+q_categories+'&price='+q_price+'&rating='+q_rating+'&sort_by='+q_sortby;
+        
+        setCategories([...q_categories.split(',')]);
+        setPrice(q_price);
+        setRating(q_rating);
+        setSortby(q_sortby);
+        
+
+        axios.get(BASE_URL + "product/get"+query).then((response) => {
+            setProducts(response.data);
+        }).catch((error) => {   
+            console.log(error);
+        });
+    },[]);
+    
 
     return ( 
         <>
@@ -71,10 +105,14 @@ function Category() {
                             <label className="bui-filter-label"><input type="radio" name="sort_by"/> Price - Low to High</label>
                             <label className="bui-filter-label"><input type="radio" name="sort_by"/> Price - High to Low</label>
                         </div>
+
+                        <div className="bui-filter-block">
+                            <button className="bui-btn bui-btn-block bui-btn-primary" onClick={applyFilter}>Apply</button>
+                        </div>
                     </div>
 
                     <div className="bui-products-listing">
-                        <p className="bui-products-title">Showing all products <span>(showing 20 products)</span></p>
+                        <p className="bui-products-title">Showing all products <span>(showing {products.length} products)</span></p>
                         <div className="bui-filter-mobile"><i className="bi bi-list"></i> Filters</div>
                         
                         <div className="bui-products-col">
@@ -82,20 +120,26 @@ function Category() {
                             {
                                 products.map(item => {
                                     return(
-                                        <div className="bui-card bui-card-product" key={item.id}>
+                                        <div className="bui-card bui-card-product" key={item._id}>
                                             {
-                                                isWishlist(item.id) ?
-                                                <div className="bui-card-badge bui-whishlist-icon bui-whishlisted" onClick={() => addToWishlist(item)} ><i className="bi bi-heart-fill"></i></div>
+                                                isWishlist(item._id) ?
+                                                <div className="bui-card-badge bui-whishlist-icon bui-whishlisted" onClick={() => addToWishlist({id: item._id, ...item})} ><i className="bi bi-heart-fill"></i></div>
                                                 :
-                                                <div className="bui-card-badge bui-whishlist-icon" onClick={() => addToWishlist(item)} ><i className="bi bi-heart"></i></div>
+                                                <div className="bui-card-badge bui-whishlist-icon" onClick={() => addToWishlist({id: item._id, ...item})} ><i className="bi bi-heart"></i></div>
                                             }
                                             <img className="bui-card-img-top" src={item.image} alt="card-image"/>
                                             <div className="bui-card-body bui-text-center">
-                                                <p className="bui-card-text">{item.title}</p>
+                                                <p className="bui-card-text">{item.title} ({item.rating})</p>
                                                 <h5 className="bui-card-title">₹{item.price}</h5>
                                             </div>
                                             <div className="bui-card-footer">
-                                                <button className="bui-btn bui-btn-info bui-addcart" onClick={() => addToCart(item)}>Add to cart</button>
+                                            {
+                                                isAddedToCart(item._id) ? 
+                                                <button className="bui-btn bui-btn-warning bui-addcart" onClick={() => navigate('/cart')}>Go to cart</button>
+                                                :
+                                                <button className="bui-btn bui-btn-info bui-addcart" onClick={() => addToCart({id: item._id, ...item})}>Add to cart</button>
+                                            }
+                                                
                                             </div>
                                         </div>
                                     )

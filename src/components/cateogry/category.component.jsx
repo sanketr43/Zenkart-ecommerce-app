@@ -13,9 +13,11 @@ function Category() {
     const [products, setProducts] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
     const [categories, setCategories] = useState([]);
-    const [price, setPrice] = useState();
-    const [rating, setRating] = useState();
-    const [sortby, setSortby] = useState();
+    const [price, setPrice] = useState(0);
+    const [rating, setRating] = useState(0);
+    const [sortby, setSortby] = useState('');
+    const [query, setQuery] = useState('');
+    const [categorylist, setCategorylist] = useState([]);
 
     const { dispatch } = useCart();
     const {stateWishlist, dispatchWishlist} = useWishlist();
@@ -42,7 +44,23 @@ function Category() {
     }
 
     const applyFilter = () => {
-        alert();
+        let newQuery = '?id='+categories.join()+'&price='+price+'&rating='+rating+'&sort_by='+sortby;
+        setQuery(newQuery);
+        navigate("/products" + newQuery);
+    }
+
+    const clearFilter = () => {
+        let newQuery = '?id='+categories.join();
+        setQuery(newQuery);
+        navigate("/products" + newQuery);
+    }
+
+    const pushCategory = (e) => {
+        if(e.target.checked === true){
+            setCategories(prev => [...prev, e.target.value]);
+        }else{
+            setCategories(categories.filter(category => category !== e.target.value));
+        }
     }
 
     useEffect(()=>{
@@ -51,7 +69,8 @@ function Category() {
         let q_rating = (searchParams.get('rating'))? searchParams.get('rating') : '';
         let q_sortby = (searchParams.get('sort_by'))? searchParams.get('sort_by') : '';
 
-        let query = '?id='+q_categories+'&price='+q_price+'&rating='+q_rating+'&sort_by='+q_sortby;
+        let newQuery = '?id='+q_categories+'&price='+q_price+'&rating='+q_rating+'&sort_by='+q_sortby;
+        setQuery(newQuery);
         
         setCategories([...q_categories.split(',')]);
         setPrice(q_price);
@@ -59,13 +78,24 @@ function Category() {
         setSortby(q_sortby);
         
 
-        axios.get(BASE_URL + "product/get"+query).then((response) => {
+        axios.get(BASE_URL + "product/get" + newQuery).then((response) => {
             setProducts(response.data);
-        }).catch((error) => {   
-            console.log(error);
+        }).catch(() => {   
         });
+    },[query]);
+
+    useEffect(() => {
+        const getCategories = ( async () => {
+            await axios.get(BASE_URL + "category/get").then((response) => {
+                setCategorylist(response.data);
+            }).catch(() => {   
+            });
+        });
+        getCategories();
     },[]);
     
+
+    console.log(categories);
 
     return ( 
         <>
@@ -74,36 +104,42 @@ function Category() {
                     <div className="bui-products-filter" id="productsFilter">
                         <div className="bui-products-filter-block">
                             <div className="bui-filter-mobile" style={{ textAlign: "right" }}><p>Close</p></div>
-                            <div className="bui-filter"><p className="bui-filter-title">Filters</p> <a href="#">Clear</a></div>
+                            <div className="bui-filter"><p className="bui-filter-title">Filters</p> <a href="#" onClick={clearFilter}>Clear</a></div>
                         </div>
 
                         <div className="bui-filter-block">
                             <p className="bui-filter-title">Price</p>
                             <div className="bui-mb-3 bui-mt-3">
-                                <label htmlFor="price" className="bui-form-label" id="priceValue"></label>
-                                <input name="price" className="bui-slider" id="priceRange" type="range" min="1" max="100"/>
+                                <label htmlFor="price" className="bui-form-label" id="priceValue">{(price) ? price : 0}</label>
+                                <input name="price" className="bui-slider" id="priceRange" value={price} type="range" min="1" max="10000" onChange={(e) => setPrice(e.target.value)} />
                             </div>
                         </div>
 
                         <div className="bui-filter-block">
                             <p className="bui-filter-title bui-mb-2">Category</p>
-                            <label className="bui-filter-label"><input type="checkbox"/> Men Clothing</label>
-                            <label className="bui-filter-label"><input type="checkbox"/> Women Clothing</label>
-                            <label className="bui-filter-label"><input type="checkbox"/> Child Clothing</label>
+                            {
+                                categorylist.map((category) => {
+                                    return(
+                                        <label key={category._id} className="bui-filter-label">
+                                            <input value={category._id} checked={categories.includes(category._id)} onChange={pushCategory} type="checkbox"/>{category.title}
+                                        </label>
+                                    )
+                                })
+                            }
                         </div>
 
                         <div className="bui-filter-block">
                             <p className="bui-filter-title bui-mb-2">Rating</p>
-                            <label className="bui-filter-label"><input type="radio" name="rating"/> 4 star and above</label>
-                            <label className="bui-filter-label"><input type="radio" name="rating"/> 3 star and above</label>
-                            <label className="bui-filter-label"><input type="radio" name="rating"/> 2 star and above</label>
-                            <label className="bui-filter-label"><input type="radio" name="rating"/> 1 star and above</label>
+                            <label className="bui-filter-label"><input type="radio" checked={rating == '4'} value={'4'} onChange={(e) => setRating(e.target.value)} name="rating"/> 4 star and above</label>
+                            <label className="bui-filter-label"><input type="radio" checked={rating == '3'} value={'3'} onChange={(e) => setRating(e.target.value)} name="rating"/> 3 star and above</label>
+                            <label className="bui-filter-label"><input type="radio" checked={rating == '2'} value={'2'} onChange={(e) => setRating(e.target.value)} name="rating"/> 2 star and above</label>
+                            <label className="bui-filter-label"><input type="radio" checked={rating == '1'} value={'1'} onChange={(e) => setRating(e.target.value)} name="rating"/> 1 star and above</label>
                         </div>
 
                         <div className="bui-filter-block">
                             <p className="bui-filter-title bui-mb-2">Sort By</p>
-                            <label className="bui-filter-label"><input type="radio" name="sort_by"/> Price - Low to High</label>
-                            <label className="bui-filter-label"><input type="radio" name="sort_by"/> Price - High to Low</label>
+                            <label className="bui-filter-label"><input type="radio" checked={sortby == 'LOW_TO_HIGH'} value={'LOW_TO_HIGH'} onChange={(e) => setSortby(e.target.value)} name="sort_by"/> Price - Low to High</label>
+                            <label className="bui-filter-label"><input type="radio" checked={sortby == 'HIGH_TO_LOW'} value={'HIGH_TO_LOW'} onChange={(e) => setSortby(e.target.value)} name="sort_by"/> Price - High to Low</label>
                         </div>
 
                         <div className="bui-filter-block">
